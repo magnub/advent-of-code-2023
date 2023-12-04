@@ -1,24 +1,40 @@
 import java.io.File
 
 fun main() {
+
+    fun sum(lines: List<String>): Int {
+        var sum = 0
+        lines.forEach {
+            if (it.isEmpty()) return@forEach
+            val first = it.first { it.isDigit() }
+            val last = it.last { it.isDigit() }
+            sum += "$first$last".toInt()
+        }
+        return sum
+    }
+
+    fun part1(lines: List<String>) {
+        println(sum(lines))
+    }
+
+    fun part2(lines: List<String>) {
+        val list = mutableListOf<String>()
+        lines.forEach {
+            val windowed = it.windowed(5, 1, true)
+            var result = ""
+            windowed.forEach { each ->
+                each.trim().toNumber().filterNot { it.isWhitespace() || it.toString().isEmpty() }.let {
+                    result += it
+                }
+            }
+            list.add(result)
+        }
+        println(sum(list))
+    }
+
     val lines = File("/Users/mange/Downloads/advent23/1").readLines()
     part1(lines)
     part2(lines)
-}
-
-fun sum(lines: List<String>): Int {
-    var sum = 0
-    lines.forEach {
-        if (it.isEmpty()) return@forEach
-        val first = it.first { it.isDigit() }
-        val last = it.last { it.isDigit() }
-        sum += "$first$last".toInt()
-    }
-    return sum
-}
-
-fun part1(lines: List<String>) {
-    println(sum(lines))
 }
 
 val numbers = setOf(
@@ -33,21 +49,6 @@ val numbers = setOf(
     "eight" to "8",
     "nine" to "9"
 )
-
-fun part2(lines: List<String>) {
-    val list = mutableListOf<String>()
-    lines.forEach {
-        val windowed = it.windowed(5, 1, true)
-        var result = ""
-        windowed.forEach { each ->
-            each.trim().toNumber().filterNot { it.isWhitespace() || it.toString().isEmpty() }.let {
-                result += it
-            }
-        }
-        list.add(result)
-    }
-    println(sum(list))
-}
 
 fun String.toNumber(): String {
     numbers.forEach {
