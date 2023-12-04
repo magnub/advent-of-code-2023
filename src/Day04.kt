@@ -47,7 +47,7 @@ fun main() {
         println(cards.sumOf { it.count })
     }
 
-    val lines = File("/Users/mange/Downloads/advent23/4").readLines()
+    val lines = readInput("Day4")
     var time = measureTimedValue { part1(lines) }
     println("Part 1 took: ${time.duration.inWholeMilliseconds} ms")
     time = measureTimedValue { part2(lines) }

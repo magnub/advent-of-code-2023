@@ -32,7 +32,7 @@ fun main() {
         println(sum(list))
     }
 
-    val lines = File("/Users/mange/Downloads/advent23/1").readLines()
+    val lines = readInput("Day1")
     part1(lines)
     part2(lines)
 }
