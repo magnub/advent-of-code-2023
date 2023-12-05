@@ -37,9 +37,8 @@ fun main() {
             val nbrOfWinners = ours.filter { it in winners }.size
             //println("Current: ${cards[index]}")
             val count = cards[index].count
-            for (i in index + 1..index + nbrOfWinners) {
-                if (i >= cards.size) continue
-                cards[i].increment(count)
+            for (i in 1..nbrOfWinners) {
+                cards[index+i].increment(count)
             }
             //println(cards)
             index++
