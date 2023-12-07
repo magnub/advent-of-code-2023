@@ -31,7 +31,7 @@ fun main() {
                 colors.filter { noWhiteSpace[i].contains(it) }
                     .map { map[it] = max(noWhiteSpace[i].replaceToInt(it), map[it] ?: 0) }
             }
-            sum += map.values.reduce { acc, value -> acc * value }
+            sum += map.values.sumOf { it }
         }
         println(sum)
     }
