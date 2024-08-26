@@ -1,5 +1,6 @@
 package twentytwo
 
+import DefaultHacker
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
 import kotlin.coroutines.CoroutineContext
@@ -200,11 +201,7 @@ fun main() {
 
 }
 
-fun String.toHacker() = DefaultHacker().toHacker(this)
-
-interface Hacker {
-    fun toHacker(input: String): String
-}
+fun String.toHacker() = DefaultHacker(mapping).toHacker(this)
 
 val mapping: (Char) -> Char = { char ->
     when (char) {
@@ -218,13 +215,6 @@ val mapping: (Char) -> Char = { char ->
         't' -> '7'
         else -> char
     }
-}
-
-class DefaultHacker : Hacker {
-    override fun toHacker(input: String) =
-        input.toCharArray().map {
-            mapping(it)
-        }.joinToString(separator = "")
 }
 
 /*fun main() = runBlocking{
