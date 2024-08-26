@@ -5,10 +5,8 @@ fun main() {
     fun sum(lines: List<String>): Int {
         var sum = 0
         lines.forEach {
-            if (it.isEmpty()) return@forEach
-            val first = it.first { it.isDigit() }
-            val last = it.last { it.isDigit() }
-            sum += "$first$last".toInt()
+            val digits = it.filter { it.isDigit() }
+            sum += "${digits.first()}${digits.last()}".toInt()
         }
         return sum
     }
