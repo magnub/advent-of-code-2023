@@ -3,6 +3,7 @@ package twentytwo
 import DefaultHacker
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
+import java.time.Clock
 import kotlin.coroutines.CoroutineContext
 import kotlin.time.Duration.Companion.milliseconds
 
@@ -196,9 +197,12 @@ fun main() {
     val set2 = setOf(2,3,4)
     println(set1-set2)
     println(set2-set1)*/
-
+    val start = System.nanoTime()
     println("testar lite ha sa kul detta blev".toHacker())
-
+    val time = System.nanoTime() - start
+    println("Ran for: $time ns")
+    println("Ran for: ${time / 1000} us")
+    println("Ran for: ${time / (1000 * 1000)} ms")
 }
 
 fun String.toHacker() = DefaultHacker(mapping).toHacker(this)

@@ -1,4 +1,5 @@
 interface Hacker {
+    // Convert input string to hacker speak
     fun toHacker(input: String): String
 }
 
